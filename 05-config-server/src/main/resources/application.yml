@@ -1,0 +1,17 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: r90-config-server
+#  profiles:
+#    active:
+#    - native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/cuevas/curso-config-server.git
+          #default-label: main
+          search-paths:
+          - 'greeting-service*'
+          
