@@ -4,15 +4,38 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@Entity
 public class Cambio implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "to_currency", nullable = false, length = 3)
 	private String to;
+	
+	@Column(name = "from_currency", nullable = false, length = 3)
 	private String from;
+	
+	@Column(nullable = false)
 	private BigDecimal conversionFactor;
+	
+	@Transient
 	private BigDecimal conversionValue;
+	@Transient
 	private String environment;
+	
+	
 	public Cambio(Long id, String to, String from, BigDecimal conversionFactor, BigDecimal conversionValue,
 			String environment) {
 		super();
