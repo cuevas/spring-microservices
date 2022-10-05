@@ -1,15 +1,19 @@
 debug: false
 server:
-  port: 8000
+  port: 8100
 
 spring:
   application:
-    name: cambio-service
+    name: book-service
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/cambio_service?useTimezone=true&serverTimezone=UTC
+    url: jdbc:mariadb://localhost:3306/book_service?useTimezone=true&serverTimezone=UTC
     username: root
     password: root
+  jackson:
+    default-property-inclusion: NON_NULL
+    serialization:
+      fail-on-empty-beans: false
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,6 +23,6 @@ spring:
         dialect: org.hibernate.dialect.MariaDB103Dialect
   flyway:
     url: jdbc:mariadb://localhost:3306/
-    schemas: cambio_service
+    schemas: book_service
     user: root
     password: root

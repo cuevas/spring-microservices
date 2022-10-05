@@ -1,7 +1,6 @@
-package com.example.demo.model;
+package br.com.erudio.response;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -12,30 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 
-@Entity
 public class Cambio implements Serializable{
+	
+	
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "to_currency", nullable = false, length = 3)
 	private String to;
-	
-	@Column(name = "from_currency", nullable = false, length = 3)
 	private String from;
-	
-	@Column(nullable = false)
-	private BigDecimal conversionFactor;
-	
-	@Transient
-	private BigDecimal conversionValue;
-	@Transient
+	private Double conversionFactor;
+	private Double conversionValue;
 	private String environment;
 	
 	
-	public Cambio(Long id, String to, String from, BigDecimal conversionFactor, BigDecimal conversionValue,
+	public Cambio(Long id, String to, String from, Double conversionFactor, Double conversionValue,
 			String environment) {
 		super();
 		this.id = id;
@@ -66,16 +54,16 @@ public class Cambio implements Serializable{
 	public void setFrom(String from) {
 		this.from = from;
 	}
-	public BigDecimal getConversionFactor() {
+	public Double getConversionFactor() {
 		return conversionFactor;
 	}
-	public void setConversionFactor(BigDecimal conversionFactor) {
+	public void setConversionFactor(Double conversionFactor) {
 		this.conversionFactor = conversionFactor;
 	}
-	public BigDecimal getConversionValue() {
+	public Double getConversionValue() {
 		return conversionValue;
 	}
-	public void setConversionValue(BigDecimal conversionValue) {
+	public void setConversionValue(Double conversionValue) {
 		this.conversionValue = conversionValue;
 	}
 	public String getEnvironment() {
